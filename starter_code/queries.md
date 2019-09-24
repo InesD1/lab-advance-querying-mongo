@@ -44,8 +44,7 @@ projection: {name:1, number_of_employees:1,_id:0}
 
 ### 9. Order all the companies by their IPO price descendently.
 
-query: {"ipo.valuation_amount": {$gt: 1}}
-sort: {ipo:-1}
+sort: {"ipo.valuation_amount":-1}
 
 ### 10. Retrieve the 10 companies with more employees, order by the `number of employees`
 
@@ -54,7 +53,7 @@ limit: 10
 
 ### 11. All the companies founded on the second semester of the year. Limit your search to 1000 companies.
 
-query: {founded_month: {$gt: 5}}
+query: {founded_month: {$gte: 5}}
 limit: 1000
 
 <!-- ### 12. All the companies that have been 'deadpooled' after the third year. -->
@@ -67,14 +66,14 @@ query: {founded_year: {$lt: 2000}, "acquisition.price_amount": {$gt:10000000}}
 
 ### 13. All the companies that have been acquired after 2010, order by the acquisition amount, and retrieve only their `name` and `acquisition` field.
 
-query: {"acquisition.acquired_year":{$gt:2009}}
+query: {"acquisition.acquired_year":{$gt:2010}}
 projection: {name:1, acquisition:1, _id:0}
-sort: {"acquisition.price_amount":-1}
+sort: {"acquisition.price_amount":1}
 
 ### 14. Order the companies by their `founded year`, retrieving only their `name` and `founded year`.
 
 projection: {name:1, founded_year:1, _id:0}
-sort: {founded_year:-1}
+sort: {founded_year:1}
 
 ### 15. All the companies that have been founded on the first seven days of the month, including the seventh. Sort them by their `acquisition price` descendently. Limit the search to 10 documents.
 
